@@ -1,5 +1,7 @@
 package br.com.fiap.DigitalTraining.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,10 @@ public class UsuarioService {
 	
 	public Usuario getUserById(Long usuarioId) {
 		return repository.findById(usuarioId).orElse(null);
+	}
+	
+	public List<Usuario> listaUsuario() {
+		return repository.findAll();
 	}
 	
 }
