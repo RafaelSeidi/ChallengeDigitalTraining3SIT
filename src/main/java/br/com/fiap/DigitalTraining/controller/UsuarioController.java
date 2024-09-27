@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +38,11 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService userService;
 	
+	@GetMapping("/usuario/listar")
+	public List<Usuario> listar() {
+		return userService.listaUsuario();
+	}
+	
 	@PostMapping("/usuario/login")
 	public Usuario login(@RequestBody JsonUserLogin login) {
 		Usuario oauthUser = userService.login(login.getEmail(), login.getSenha());
@@ -54,10 +58,4 @@ public class UsuarioController {
 	public Usuario cadastrar(@RequestBody Usuario user) {
 		return userService.saveUsuario(user);
 	}
-	
-	@GetMapping("/usuario/listar")
-	public List<Usuario> listar() {
-		return userService.listaUsuario();
-	}
-	
 }
