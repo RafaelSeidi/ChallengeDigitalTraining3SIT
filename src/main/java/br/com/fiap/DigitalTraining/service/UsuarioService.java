@@ -31,4 +31,10 @@ public class UsuarioService {
 		return repository.findAll();
 	}
 	
+	public Usuario removeUsuario(Long userId) {
+		Usuario user = getUserById(userId);
+		repository.delete(user);
+		return user;
+	}
+	
 }

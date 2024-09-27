@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,9 +39,9 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService userService;
 	
-	@GetMapping("/usuario/listar")
-	public List<Usuario> listar() {
-		return userService.listaUsuario();
+	@PostMapping("/usuario/cadastrar")
+	public Usuario cadastrar(@RequestBody Usuario user) {
+		return userService.saveUsuario(user);
 	}
 	
 	@PostMapping("/usuario/login")
@@ -54,8 +55,14 @@ public class UsuarioController {
 		}
 	}
 	
-	@PostMapping("/usuario/cadastrar")
-	public Usuario cadastrar(@RequestBody Usuario user) {
-		return userService.saveUsuario(user);
+	@GetMapping("/usuario/listar")
+	public List<Usuario> listar() {
+		return userService.listaUsuario();
 	}
+	
+	@DeleteMapping("/usuario/remover")
+	public Usuario remover(@RequestBody Long userId) {
+		return userService.removeUsuario(userId);
+	}
+	
 }
