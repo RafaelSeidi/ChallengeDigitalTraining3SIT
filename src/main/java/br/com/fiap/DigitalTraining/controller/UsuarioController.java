@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,24 @@ final class JsonUserLogin {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+}
+
+final class JsonUserUpdate {
+	private Long uid;
+	private String dado;
+	
+	public Long getUid() {
+		return uid;
+	}
+	public void setUid(Long uid) {
+		this.uid = uid;
+	}
+	public String getDado() {
+		return dado;
+	}
+	public void setDado(String dado) {
+		this.dado = dado;
 	}
 }
 
@@ -63,6 +82,21 @@ public class UsuarioController {
 	@DeleteMapping("/usuario/remover")
 	public Usuario remover(@RequestBody Long userId) {
 		return userService.removeUsuario(userId);
+	}
+	
+	@PutMapping("/usuario/updateEmail")
+	public Usuario mudarEmail(@RequestBody JsonUserUpdate update) {
+		return userService.updateEmail(update.getUid(), update.getDado());
+	}
+	
+	@PutMapping("/usuario/updateTelefone")
+	public Usuario mudarTelefone(@RequestBody JsonUserUpdate update) {
+		return userService.updateTelefone(update.getUid(), update.getDado());
+	}
+	
+	@PutMapping("/usuario/updateSenha")
+	public Usuario mudarSenha(@RequestBody JsonUserUpdate update) {
+		return userService.updateSenha(update.getUid(), update.getDado());
 	}
 	
 }

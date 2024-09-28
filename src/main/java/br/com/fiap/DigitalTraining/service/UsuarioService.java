@@ -37,4 +37,22 @@ public class UsuarioService {
 		return user;
 	}
 	
+	public Usuario updateEmail(Long uid, String mail) {
+		Usuario user = getUserById(uid);
+		user.setEmail(mail);
+		return repository.save(user);
+	}
+	
+	public Usuario updateTelefone(Long uid, String telefone) {
+		Usuario user = getUserById(uid);
+		user.setTelefone(telefone);
+		return repository.save(user);
+	}
+	
+	public Usuario updateSenha(Long uid, String senha) {
+		Usuario user = getUserById(uid);
+		user.setSenha(senha);
+		return repository.save(user);
+	}
+	
 }
