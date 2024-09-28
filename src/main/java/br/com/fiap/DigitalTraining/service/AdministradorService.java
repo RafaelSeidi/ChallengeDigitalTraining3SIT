@@ -25,4 +25,10 @@ public class AdministradorService {
 		return repository.findById(adminId).orElse(null);
 	}
 	
+	public Administrador removeAdmin(Long adminId) {
+		Administrador admin = getAdminById(adminId);
+		repository.delete(admin);
+		return admin;
+	}
+	
 }
