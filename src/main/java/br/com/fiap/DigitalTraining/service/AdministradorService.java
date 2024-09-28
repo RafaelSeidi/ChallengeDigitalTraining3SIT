@@ -31,4 +31,22 @@ public class AdministradorService {
 		return admin;
 	}
 	
+	public Administrador updateEmail(Long adminId, String mail) {
+		Administrador admin = getAdminById(adminId);
+		admin.setEmail(mail);
+		return repository.save(admin);
+	}
+	
+	public Administrador updateTelefone(Long adminId, String telefone) {
+		Administrador admin = getAdminById(adminId);
+		admin.setTelefone(telefone);
+		return repository.save(admin);
+	}
+	
+	public Administrador updateSenha(Long adminId, String senha) {
+		Administrador admin = getAdminById(adminId);
+		admin.setSenha(senha);
+		return repository.save(admin);
+	}
+	
 }
