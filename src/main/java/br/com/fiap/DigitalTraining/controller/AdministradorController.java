@@ -3,7 +3,6 @@ package br.com.fiap.DigitalTraining.controller;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.DigitalTraining.model.Administrador;
-import br.com.fiap.DigitalTraining.model.Usuario;
 import br.com.fiap.DigitalTraining.service.AdministradorService;
-import br.com.fiap.DigitalTraining.service.UsuarioService;
 
 final class JsonAdminLogin {
 	private String email;
